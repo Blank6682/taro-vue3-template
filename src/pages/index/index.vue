@@ -1,6 +1,6 @@
 <template>
   <view class="index">
-    <text>{{ msg }}</text>
+    <text class="border-base center">{{ msg }}</text>
   </view>
 </template>
 
@@ -9,7 +9,7 @@ import { ref } from 'vue'
 import './index.scss'
 
 export default {
-  setup () {
+  setup() {
     const msg = ref('Hello world')
     return {
       msg

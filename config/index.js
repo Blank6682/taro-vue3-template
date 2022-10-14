@@ -7,7 +7,8 @@ const config = {
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
-    828: 1.81 / 2
+    828: 1.81 / 2,
+    375: 2 / 1
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -47,11 +48,11 @@ const config = {
         }
       }
     },
-    //合并webpack配置
-    webpackChain(chain){
+    // 合并webpack配置
+    webpackChain(chain) {
       // https://github.com/unocss/unocss
-      chain.plugins('unocss').use(UnoCSS())
-    }
+      chain.plugin('unocss').use(UnoCSS())
+    },
   },
   h5: {
     publicPath: '/',
@@ -69,12 +70,12 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       },
-      // 合并webpack配置
-      webpackChain(chain) {
-        // https://github.com/unocss/unocss
-        chain.plugin('unocss').use(UnoCSS())
-      },
-    }
+    },
+    // 合并webpack配置
+    webpackChain(chain) {
+      // https://github.com/unocss/unocss
+      chain.plugin('unocss').use(UnoCSS())
+    },
   },
   rn: {
     appName: 'taroDemo',
