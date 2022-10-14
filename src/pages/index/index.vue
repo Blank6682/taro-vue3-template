@@ -2,6 +2,7 @@
   <view class="index">
     <text class="border-base center">{{ msg }}</text>
   </view>
+  <div border-base bg-pink center> This is Html tag</div>
 </template>
 
 <script>
