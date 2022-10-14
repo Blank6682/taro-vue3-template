@@ -1,3 +1,4 @@
+import path from 'path'
 import UnoCSS from 'unocss/webpack'
 import AutoImport from 'unplugin-auto-import/webpack'
 import Components from 'unplugin-vue-components/webpack'
@@ -14,7 +15,20 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['@tarojs/plugin-html', 'taro-plugin-pinia'],
+  plugins: [
+    '@tarojs/plugin-html',
+    'taro-plugin-pinia',
+    ['@tarojs/plugin-framework-vue3', {
+      vueLoaderOption: {
+        compilerOptions: {
+          isCustomElement: tag => tag.includes("ec-canvas"),
+          whitespace: 'preserve'
+          // ...
+        },
+        reactivityTransform: true  // 开启vue3响应性语法糖
+      }
+    }]
+  ],
   defineConstants: {
   },
   copy: {
@@ -115,12 +129,15 @@ const config = {
     },
   },
   rn: {
-    appName: 'taroDemo',
+    appName: 'taroVue3Template',
     postcss: {
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
       }
     }
+  },
+  alias: {
+    '@/': path.resolve(__dirname, '..', 'src')
   }
 }
 
