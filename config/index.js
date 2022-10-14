@@ -1,4 +1,6 @@
 import UnoCSS from 'unocss/webpack'
+import AutoImport from 'unplugin-auto-import/webpack'
+import Components from 'unplugin-vue-components/webpack'
 
 const config = {
   projectName: 'taro-dome',
@@ -51,7 +53,27 @@ const config = {
     // 合并webpack配置
     webpackChain(chain) {
       // https://github.com/unocss/unocss
-      chain.plugin('unocss').use(UnoCSS())
+      chain.plugin('unocss').use(UnoCSS()),
+        // https://github.com/antfu/unplugin-auto-import
+        chain.plugin('unplugin-auto-import').use(AutoImport({
+          imports: [
+            'vue',
+            // https://vuejs.org/guide/extras/reactivity-transform.html#refs-vs-reactive-variables
+            'vue/macros',
+          ],
+          dts: 'types/auto-imports.d.ts',
+          dirs: [
+            'src/composables',
+            'src/stores',
+          ],
+          vueTemplate: true,
+        })),
+        // 添加组件按需引入, 自动引入 `src/components` 目录下的组件
+        // https://github.com/antfu/unplugin-vue-components
+        chain.plugin('unplugin-vue-components').use(Components({
+          dts: 'types/components.d.ts',
+          dirs: ['src/components', 'src/layouts'],
+        }))
     },
   },
   h5: {
