@@ -73,7 +73,22 @@ const config = {
         chain.plugin('unplugin-vue-components').use(Components({
           dts: 'types/components.d.ts',
           dirs: ['src/components', 'src/layouts'],
-        }))
+        })),
+        chain.merge({
+          module: {
+            rule: {
+              mjsScript: {
+                test: /\.mjs$/,
+                include: [/pinia/, /unplugin-vue-components/, /unplugin-auto-import/],
+                use: {
+                  babelLoader: {
+                    loader: require.resolve('babel-loader'),
+                  },
+                },
+              },
+            },
+          },
+        })
     },
   },
   h5: {
