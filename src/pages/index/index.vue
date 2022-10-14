@@ -3,18 +3,27 @@
     <text class="border-base center">{{ msg }}</text>
   </view>
   <div border-base bg-pink center> This is Html tag</div>
+  <MyComponents :msg="componentMsg" />
+  <div flex="~ col item-center" text-center>
+    <div>Pinia</div>
+    <div>{{counter.count}}</div>
+    <button @click="counter.increment">Add</button>
+  </div>
+  <button @click="toAbout">to about</button>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup lang="ts">
+import Taro from '@tarojs/taro';
 import './index.scss'
 
-export default {
-  setup() {
-    const msg = ref('Hello world')
-    return {
-      msg
-    }
-  }
+const msg = ref('Hello world')
+const componentMsg = ref('This is MyComponents')
+const counter = useCounterStore()
+const toAbout = () => {
+  console.log(Taro);
+
+  Taro.navigateTo({
+    url: '../about/index'
+  })
 }
 </script>
