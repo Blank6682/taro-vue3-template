@@ -6,6 +6,7 @@ export default defineConfig({
   presets: [
     // https://github.com/MellowCo/unocss-preset-weapp
     presetWeapp(
+
       // h5兼容设置，默认为 750 标准，webpack4 平台
       // 只开发小程序可删除
       {
@@ -18,6 +19,8 @@ export default defineConfig({
           828: 1.81 / 2,
           375: 2 / 1
         },
+        //解决和UI组件库原子化CSS冲突
+        prefix: 'li--',
         // 通过设置 taroWebpack 版本，指定 rem 策略
         // 解决h5根字体(rem)大小不同 https://github.com/NervJS/taro/issues/12361
         // webpack4 webpack5
@@ -49,7 +52,10 @@ export default defineConfig({
   },
   transformers: [
     // options 见https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerAttributify
-    transformerAttributify(),
+    transformerAttributify({
+      //解决和UI组件库原子化CSS冲突
+      classPrefix: 'li--'
+    }),
 
     // options 见https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerClass
     transformerClass(),
