@@ -1,17 +1,17 @@
 <template>
   <!-- wx写法 -->
   <view class="index">
-    <text class="border-base center">{{ msg }}</text>
+    <text border-base center m-2>{{ msg }} </text>
   </view>
   <!-- Html tag写法 -->
-  <div border-base bg-pink center> This is Html tag</div>
-  <MyComponents :msg="componentMsg" />
-  <div flex="~ col item-center" text-center>
+  <div m-2 border-base bg-pink text-center> This is Html tag</div>
+  <MyComponents :msg="componentMsg" m-2 />
+  <div flex="~ col item-center" text-center border m-5>
     <div>Pinia</div>
     <div>{{counter.count}}</div>
     <button @click="counter.increment">Add</button>
   </div>
-  <button @click="toAbout">to about</button>
+  <button @click="toAbout" center>to about </button>
 </template>
 
 <script setup lang="ts">

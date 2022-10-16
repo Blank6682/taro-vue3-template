@@ -20,7 +20,7 @@ export default defineConfig({
           375: 2 / 1
         },
         //解决和UI组件库原子化CSS冲突
-        prefix: 'li--',
+        // prefix: 'li--',
         // 通过设置 taroWebpack 版本，指定 rem 策略
         // 解决h5根字体(rem)大小不同 https://github.com/NervJS/taro/issues/12361
         // webpack4 webpack5
@@ -54,7 +54,7 @@ export default defineConfig({
     // options 见https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerAttributify
     transformerAttributify({
       //解决和UI组件库原子化CSS冲突
-      classPrefix: 'li--'
+      // classPrefix: 'li--'
     }),
 
     // options 见https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerClass
