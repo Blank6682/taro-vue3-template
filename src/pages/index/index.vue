@@ -1,7 +1,9 @@
 <template>
+  <!-- wx写法 -->
   <view class="index">
     <text class="border-base center">{{ msg }}</text>
   </view>
+  <!-- Html tag写法 -->
   <div border-base bg-pink center> This is Html tag</div>
   <MyComponents :msg="componentMsg" />
   <div flex="~ col item-center" text-center>
@@ -20,10 +22,9 @@ const msg = ref('Hello world')
 const componentMsg = ref('This is MyComponents')
 const counter = useCounterStore()
 const toAbout = () => {
-  console.log(Taro);
 
   Taro.navigateTo({
-    url: '../about/index'
+    url: '/pages/about/index'
   })
 }
 </script>

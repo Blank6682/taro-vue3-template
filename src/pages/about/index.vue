@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="index">
     This is about page
   </div>
 </template>
@@ -8,6 +8,6 @@
 
 </script>
 
-<style scoped>
+<style >
 
 </style>
